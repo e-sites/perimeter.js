@@ -24,7 +24,7 @@ Perimeter.js
 First and foremost, download the script and include it as follows:
 
 ```html
-&lt;script src="perimeter.min.js"&gt;&lt;/script&gt;
+<script src="perimeter.min.js"></script>
 ```
 
 Second, just call the <code>Perimeter</code> constructor function and pass the corresponding options.

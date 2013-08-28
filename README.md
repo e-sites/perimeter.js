@@ -4,6 +4,8 @@ Perimeter.js
 	<p>Creates an invisible perimeter around a target element and monitors mouse breaches.</p>
 </blockquote>
 
+More info, docmentation and examples @ http://github.e-sites.nl/perimeter.js/
+
 ##Use cases
 <ul>
 	<li>Showing some sort of tooltip / popover when hovering near a certain element, like a hint or a tip</li>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="dns-prefetch" href="//netdna.bootstrapcdn.com">
+		<link rel="dns-prefetch" href="//www.google-analytics.com">
+		<title>Perimeter.js: Creates an invisible perimeter around a target element and monitors mouse breaches.</title>
+		<meta name="description" content="Creates an invisible perimeter around a target element and monitors mouse breaches.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://frontend.e-sites.nl/library/min/g=prettifyCss">
+		<style>
+			#coords {border:1px solid; padding:1em; position:fixed; bottom:20px; width:10%; left:20px;}
+    		.square {width:100px; height:100px; padding:1em; box-sizing:border-box; border:2px solid; background:lightgray;}
+    		.boundary {position:absolute; border:1px dotted; background:#E4FECB; background:rgba(127,255,0,0.2); margin:0; padding:0; z-index:-1;}
+		</style>
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.min.js"></script>
+		<![endif]-->
+		<script>var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-18924418-1'],['_setDomainName', '.e-sites.nl'],['_trackPageview'],['_trackPageLoadTime']);(function(b,c){var a=b.createElement(c),d=b.getElementsByTagName(c)[0];a.async=a.src='//www.google-analytics.com/ga.js';d.parentNode.insertBefore(a,d)})(document,'script');</script>
+	</head>
+	<body>
+		<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+			<div class="container">
+				<div class="navbar-header clearfix">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="http://e-sites.nl/en/" class="logo"><img src="http://frontend.e-sites.nl/img/esites-symbol.png" alt="" width="25"></a>
+					<a class="navbar-brand" href="/perimeter.js">Perimeter.js</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/perimeter.js">Home</a></li>
+						<li><a href="#examples">Examples</a></li>
+						<li><a href="http://e-sites.nl/en/" target="_blank">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container" style="padding:60px .5em 0;">
+			<h1>Perimeter.js</h1>
+			<blockquote>
+				<p>Creates an invisible perimeter around a target element and monitors mouse breaches.</p>
+			</blockquote>
+			<span id="forkongithub"><a href="https://github.com/e-sites/perimeter.js">Fork me on GitHub</a></span>
+			<h2>Use cases</h2>
+			<ul>
+				<li>Showing some sort of tooltip / popover when hovering near a certain element, like a hint or a tip</li>
+				<li>Lazy load a script when the perimeter of the target element is breached (AFAIK Google does this when a user moves it's mouse towards the red 'compose' button).</li>
+				<li>Fetch data via AJAX and do something with it when a users navigates towards a certain element</li>
+			</ul>
+			<hr>
+			<h2>Specs</h2>
+			<ul>
+				<li>Lightweight; (~0.6kb minified / gzipped)</li>
+				<li>No dependencies; just plug it in and you're good to go</li>
+				<li>Built-in debugger to actually see where the perimeter is located (boundary.js)</li>
+				<li>Fully documented</li>
+				<li>Unit-tests available (when 0.2.0 lands)</li>
+			</ul>
+			<hr>
+			<h2>Getting started</h2>
+			<p>First and foremost, <a href="https://github.com/e-sites/perimeter.js" target="_blank">download</a> the script and include it as follows:</p>
+<pre class="prettyprint">
+&lt;script src="perimeter.min.js"&gt;&lt;/script&gt;
+</pre>
+			<p>Second, just call the <code>Perimeter</code> constructor function and pass the corresponding options.</p>
+<pre class="prettyprint">
+new Perimeter({
+    target: 'square',
+    outline: 20,
+    onBreach: function () {
+        // Breach!
+    }
+});
+</pre>
+			<p>In case you're working with <code>perimeter.debug.js</code> you'll need to add a bit of CSS to actually see the boundary:</p>
+<pre class="prettyprint">
+.boundary {
+    position:absolute;
+    border:1px dotted;
+    background:#E4FECB;
+    background:rgba(127,255,0,0.2);
+    margin:0;
+    padding:0;
+    z-index:-1;
+}
+</pre>
+			<h3>Options</h3>
+			<table class="table table-bordered table-striped bs-table">
+				<colgroup>
+					<col class="col-lg-1">
+					<col class="col-lg-1">
+					<col class="col-lg-1">
+					<col class="col-lg-7">
+				</colgroup>
+				<thead>
+				<tr>
+					<th>Property</th>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>target</code>
+						</td>
+						<td><code>{String}</code></td>
+						<td>
+							The ID of the target element
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>monitor</code>
+						</td>
+						<td><code>{HTMLElement}</code></td>
+						<td>
+							Element where the <code>mousemove</code> event will be bound to and therefore acts as monitor for breaches.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>outline</code>
+						</td>
+						<td><code>{Number|Array}</code></td>
+						<td>
+							Outline around the target element. This can either be an array with top/right/bottom/left dimensions or just one number which acts as shorthand for all directions.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>debug</code>
+						</td>
+						<td><code>{Boolean}</code></td>
+						<td>
+							When debugging in a local environment you can pass the <code>debug</code> option. This will create a division that will be positioned absolutely to the <code>body</code> and basically shows where the perimeter is located. By default, the debug functionality is excluded from <code>perimeter.js</code>. So, please make sure that you include <code>perimeter.debug.js</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>onBreach</code>
+						</td>
+						<td><code>{Function}</code></td>
+						<td>
+							Callback function that will be invoked when the monitor detects a breach.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>onLeave</code>
+						</td>
+						<td><code>{Function}</code></td>
+						<td>
+							Callback function that will be invoked when the mouse cursor leaves the perimeter.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr id="examples">
+			<h2>Examples</h2>
+			<h3>Example 1</h3>
+			<br><br><br>
+			<div class="row clearfix" id="example-1">
+				<div class="col-6 col-md-6">
+					<div id="target1" class="square" style="position:relative; left:100px;"></div>
+				</div>
+  				<div class="col-6 col-md-6">
+  					<h4>Code example</h4>
+<pre class="prettyprint">
+new Perimeter({
+    target: 'square',
+    debug: true,
+    outline: 50,
+    onBreach: function () {
+        this.target.innerHTML = 'breach!';
+    },
+    onLeave: function () {
+        this.target.innerHTML = 'left perimeter';
+    }
+});
+</pre>
+  				</div>
+			</div>
+			<hr>
+			<div class="row clearfix" id="example-2">
+				<h3>Example 2</h3>
+				<p>
+					Pass a custom element that needs monitoring, if you leave it out Perimeter will use the <code>document</code> as monitoring area.
+				</p>
+				<p class="alert alert-info">
+					<strong>Note:</strong> when using, for example, the parent element as monitoring area you will need to make sure it completely fits,<br> i.e. if the perimeter overlaps the monitoring element it will not trigger a breach properly.
+				</p>
+				<br>
+				<div class="col-6 col-md-6">
+					<div id="target2" class="square" style="left:250px; position:relative;"></div>
+					<label for="custom-outline" style="margin-top:40px">
+						Change the outline
+						<input type="range" min="5" max="100" step="5" value="20" id="custom-outline" style="vertical-align:middle;">
+					</label>
+				</div>
+  				<div class="col-6 col-md-6">
+  					<h4>Code example</h4>
+<pre class="prettyprint">
+new Perimeter({
+    target: 'target2',
+    monitor: $('#example-2')[0],
+    debug: true,
+    outline: 20,
+    onBreach: function () {
+        this.target.innerHTML = 'breach!';
+    },
+    onLeave: function () {
+        this.target.innerHTML = '';
+    }
+});
+</pre>
+  				</div>
+			</div>
+			<hr>
+			<div class="row clearfix" id="example-3">
+				<h3>Example 3</h3>
+				<p>
+					Let's say you have a page with a fair amount of widgets, including one where users can upload files. Now, this widget will most likely not be used every time a user visits the page.
+					This is where Perimeter.js comes in handy. By setting a large enough perimeter you're able to lazy-load <code>fileupload.js</code> when the perimeter is breached.
+				</p>
+				<br>
+				<div class="col-6 col-md-6">
+					<a id="target3" data-toggle="lightbox" href="#demoLightbox" class="btn btn-primary" style="left:0; top:100px; position:relative;">Call to action button</a>
+					<div id="demoLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+						<div class='lightbox-content'>
+							<img src="http://media-cache-ec0.pinimg.com/originals/88/29/4b/88294bd077d6a75307705962b7788112.jpg">
+							<div class="lightbox-caption"><p>e-sites HQ</p></div>
+						</div>
+					</div>
+				</div>
+  				<div class="col-6 col-md-6">
+  					<h4>Code example</h4>
+<pre class="prettyprint">
+new Perimeter({
+    target: 'target3',
+    debug: true,
+    outline: [50, 500, 50, 0],
+    onBreach: function () {
+        if ( this.breaches.length === 1 ) {
+            $.getScript('script.js');
+        }
+    }
+});
+</pre>
+  				</div>
+			</div>
+			<hr id="browsersupport">
+			<h2>Browser support</h2>
+			<p>Tested in the latest (stable) versions of Google Chrome, Mozilla Firefox, Opera and Safari. As for Internet Explorer; I have tested in IE8+ but it should work in IE7 as well (though, it might be quirky).</p>
+			<hr id="roadmap">
+			<h2>Road map</h2>
+			<p>When I have some spare time I will try to accomplish the following:</p>
+			<ul>
+				<li>Performance measurements</li>
+				<li>More documentation / examples</li>
+				<li>Unit testing</li>
+			</ul>
+			<hr>
+			<h2>License</h2>
+			<p>
+				Copyright (C) 2013 e-sites, <a href="http://www.e-sites.nl/">http://e-sites.nl/</a> Licensed under the MIT license.
+			</p>
+		</div>
+		<!--[if lt IE 9]>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>window.jQuery||document.write('<script src="/library/vendor/jquery/jquery-1.10.2.min.js"><\/script>')</script>
+		<![endif]-->
+		<!--[if gte IE 9]><!-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script>window.jQuery||document.write('<script src="/library/vendor/jquery/jquery-2.0.3.min.js"><\/script>')</script>
+		<!--<![endif]-->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src="http://frontend.e-sites.nl/library/min/g=prettify"></script>
+		<script>window.prettyPrint && prettyPrint();</script>
+		<!-- plugin & corresponding events for the demos -->
+		<script src="src/perimeter.js"></script>
+		<script src="src/monitor.js"></script>
+		<script src="src/boundary.js"></script>
+		<script src="assets/events.js"></script>
+	</body>
+</html>

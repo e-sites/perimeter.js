@@ -1,0 +1,43 @@
+{
+  "name": "Perimeter.js",
+  "version": "0.1.0",
+  "description": "Set a boundary on a target element and monitor all breach",
+  "homepage": "http://github.e-sites.nl/perimeter.js/",
+  "scripts": {
+    "test": "grunt jshint",
+    "start": ""
+  },
+  "author": {
+    "name": "e-sites",
+    "email": "github@e-sites.nl",
+    "web": "http://e-sites.nl/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/e-sites/perimeter.js.git"
+  },
+  "engines": {
+    "node": "~0.8.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-qunit": "~0.2.0",
+    "grunt": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/e-sites/perimeter.js/blob/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "perimeter",
+    "breach",
+    "performance",
+    "boundary",
+    "area",
+    "mouse"
+  ]
+}

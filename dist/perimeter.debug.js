@@ -108,7 +108,7 @@
 		 * 
 		 * @type {Object} ClientRect
 		 */
-		this.rects = this.utils.getClientRect(this.target);
+		this.rects = this.getClientRect(this.target);
 
 		/**
 		 * Breach monitor
@@ -158,16 +158,13 @@
 
 	/**
 	 * When triggered via onresize it will recalculate the clientRect and reflow all existing boundaries
-	 * 
-	 * @param {Object} obj Perimeter instance
-	 * @private
 	 */
-	Perimeter.prototype.recalculate = function (obj) {
+	Perimeter.prototype.recalculate = function () {
 		var inst, i;
-		if ( obj instanceof Perimeter ) {
-			obj.outline = obj.formatOutline( obj.outline );
-			if ( obj.options.debug && obj.boundary ) {
-				obj.boundary.reflow();
+		if ( this instanceof Perimeter ) {
+			this.outline = this.formatOutline( this.outline );
+			if ( this.options.debug && this.boundary ) {
+				this.boundary.reflow();
 			}
 		} else {
 			i = instances.length;
@@ -228,8 +225,7 @@
 	 * @param {Object} options Perimeter options
 	 */
 	Perimeter.prototype.init = function (options) {
-
-		// Cancel the process when the DOM element can't be found
+		// Cancel the process when the target DOM element is not present
 		if ( !this.target ) {
 			return;
 		}
@@ -243,7 +239,7 @@
 		}
 
 		_addEventListener( options.monitor || doc, 'mousemove', this.monitor.observe );
-		_addEventListener(win, 'resize', this.utils.recalculate );
+		_addEventListener(win, 'resize', this.recalculate );
 	};
 
 	// Expose Perimeter to global scope

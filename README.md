@@ -4,7 +4,7 @@ Perimeter.js
 	<p>Creates an invisible perimeter around a target element and monitors mouse breaches.</p>
 </blockquote>
 
-More info, docmentation and examples @ http://github.e-sites.nl/perimeter.js/
+More info, documentation and examples @ http://github.e-sites.nl/perimeter.js/
 
 ##Use cases
 <ul>

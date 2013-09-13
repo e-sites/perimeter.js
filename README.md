@@ -41,6 +41,20 @@ new Perimeter({
 });
 ```
 
+<strong>UPDATE:</strong> as from 0.2.0 is also possible to pass DOM elements as target (instead of only a string). This will 
+
+```js
+var items = document.querySelectorAll('.selector'),
+    i = items.length;
+
+while (i--) {
+   Perimeter({
+       target: items[i],
+       outline: 100
+   });
+}
+```
+
 In case you're working with <code>perimeter.debug.js</code> you'll need to add a bit of CSS to actually see the boundary:
 
 ```css

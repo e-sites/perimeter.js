@@ -5,7 +5,7 @@
  *  This gives the opportunity to e.g. lazy-load scripts, show a tooltip or whatnot.
  *  
  *  @author  : Boye Oomens <github@e-sites.nl>
- *  @version : 0.1.0
+ *  @version : 0.2.0
  *  @license : MIT
  *  @see     : http://github.e-sites.nl/perimeter.js/
  */
@@ -51,7 +51,7 @@
 	function Perimeter(options) {
 
 		// We need at least a target element and an outline to work with
-		if ( !options.target || !options.outline ) {
+		if ( !options || !options.target || !options.outline ) {
 			return;
 		}
 
@@ -95,7 +95,7 @@
 		 * 
 		 * @type {Object}
 		 */
-		this.target = doc.getElementById(options.target);
+		this.target = (typeof options.target === 'string' ? doc.getElementById(options.target) : options.target);
 
 		/**
 		 * Boundary used for debugging purposes

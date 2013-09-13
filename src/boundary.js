@@ -1,16 +1,17 @@
+/**
+ * Boundary constructor
+ *
+ * @param  {Object} Perimeter object
+ * @return {Object} Boundary object
+ * @constructor
+ */
+
 /* global Perimeter */
 
 (function (Perimeter, doc) {
 
 	'use strict';
 
-	/**
-	 * Boundary constructor
-	 *
-	 * @param  {Object} Perimeter object
-	 * @return {Object} Boundary object
-	 * @constructor
-	 */
 	Perimeter.prototype.Boundary = function (perimeter) {
 
 		/**
@@ -41,7 +42,7 @@
 		/**
 		 * Creates the division and injects it into the DOM
 		 * 
-		 * @return {[type]} [description]
+		 * @return {Object}
 		 */
 		this.create = function () {
 			this.elem = doc.createElement('div');
@@ -57,8 +58,8 @@
 		/**
 		 * Repositions the boundary element
 		 * 
-		 * @param  {Object} target  [description]
-		 * @param  {Number} outline [description]
+		 * @param  {Object} target
+		 * @param  {Number} outline
 		 * @return {Object}
 		 */
 		this.reflow = function (target, outline) {

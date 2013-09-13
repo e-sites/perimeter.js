@@ -36,6 +36,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="/perimeter.js">Home</a></li>
 						<li><a href="#examples">Examples</a></li>
+						<li><a href="#unittests">Unit tests</a></li>
 						<li><a href="http://e-sites.nl/en/" target="_blank">About</a></li>
 					</ul>
 				</div>
@@ -49,9 +50,9 @@
 			<span id="forkongithub"><a href="https://github.com/e-sites/perimeter.js">Fork me on GitHub</a></span>
 			<h2>Use cases</h2>
 			<ul>
-				<li>Showing some sort of tooltip / popover when hovering near a certain element, like a hint or a tip</li>
+				<li>Get the user's attention, in terms of showing some sort of tooltip / popover when hovering near a certain element, like a hint or a tip.</li>
 				<li>Lazy load a script when the perimeter of the target element is breached (AFAIK Google does this when a user moves it's mouse towards the red 'compose' button).</li>
-				<li>Fetch data via AJAX and do something with it when a users navigates towards a certain element</li>
+				<li>Fetch data via AJAX and do something with it when a users navigates towards a certain element.</li>
 			</ul>
 			<hr>
 			<h2>Specs</h2>
@@ -60,7 +61,7 @@
 				<li>No dependencies; just plug it in and you're good to go</li>
 				<li>Built-in debugger to actually see where the perimeter is located (boundary.js)</li>
 				<li>Fully documented</li>
-				<li>Unit-tests available (when 0.2.0 lands)</li>
+				<li>Unit-tests available</li>
 			</ul>
 			<hr>
 			<h2>Getting started</h2>
@@ -78,6 +79,21 @@ new Perimeter({
     }
 });
 </pre>
+
+			<p><strong>UPDATE:</strong> as from 0.2.0 it is also possible to pass DOM elements as target (instead of only a string). This way you can instantiate multiple Perimeters within a loop:</p>
+
+<pre class="prettyprint">
+var items = document.querySelectorAll('.selector'),
+    i = items.length;
+
+while (i--) {
+   Perimeter({
+       target: items[i],
+       outline: 100
+   });
+}
+</pre>
+
 			<p>In case you're working with <code>perimeter.debug.js</code> you'll need to add a bit of CSS to actually see the boundary:</p>
 <pre class="prettyprint">
 .boundary {
@@ -95,7 +111,6 @@ new Perimeter({
 				<colgroup>
 					<col class="col-lg-1">
 					<col class="col-lg-1">
-					<col class="col-lg-1">
 					<col class="col-lg-7">
 				</colgroup>
 				<thead>
@@ -110,9 +125,9 @@ new Perimeter({
 						<td>
 							<code>target</code>
 						</td>
-						<td><code>{String}</code></td>
+						<td><code>{String|HTMLElement}</code></td>
 						<td>
-							The ID of the target element
+							Either a string with the ID of the target element or a DOM element. If the corresponding element is not present the script will fail silently.
 						</td>
 					</tr>
 					<tr>
@@ -207,7 +222,7 @@ new Perimeter({
   				<div class="col-6 col-md-6">
   					<h4>Code example</h4>
 <pre class="prettyprint">
-new Perimeter({
+Perimeter({
     target: 'target2',
     monitor: $('#example-2')[0],
     debug: true,
@@ -231,13 +246,7 @@ new Perimeter({
 				</p>
 				<br>
 				<div class="col-6 col-md-6">
-					<a id="target3" data-toggle="lightbox" href="#demoLightbox" class="btn btn-primary" style="left:0; top:100px; position:relative;">Call to action button</a>
-					<div id="demoLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
-						<div class='lightbox-content'>
-							<img src="http://media-cache-ec0.pinimg.com/originals/88/29/4b/88294bd077d6a75307705962b7788112.jpg">
-							<div class="lightbox-caption"><p>e-sites HQ</p></div>
-						</div>
-					</div>
+					<a id="target3" class="btn btn-primary" style="left:0; top:100px; position:relative;">Call to action button</a>
 				</div>
   				<div class="col-6 col-md-6">
   					<h4>Code example</h4>
@@ -255,9 +264,72 @@ new Perimeter({
 </pre>
   				</div>
 			</div>
+			<hr>
+			<div class="row clearfix" id="example-4">
+				<h3>Example 4</h3>
+				<p>
+					Besides passing an ID as target, you can also pass a DOM element.
+				</p>
+				<br>
+				<div class="col-6 col-md-6">
+					<div id="target4" class="square" style="left:150px; top:50px; position:relative;"></div>
+				</div>
+  				<div class="col-6 col-md-6">
+  					<h4>Code example</h4>
+<pre class="prettyprint">
+Perimeter({
+    target: $('#target4')[0],
+    debug: true,
+    outline: 20,
+    onBreach: function () {
+        this.target.innerHTML = 'breach!';
+    },
+    onLeave: function () {
+        this.target.innerHTML = '';
+    }
+});
+</pre>
+  				</div>
+			</div>
+			<hr>
+			<div class="row clearfix" id="example-5">
+				<h3>Example 5</h3>
+				<p>
+					Animating the target element when entering the perimeter. Now, this is just simple animation, but you can imagine sky is the limit when it comes to animating the target element and getting the user's attention.
+				</p>
+				<br>
+				<div class="col-6 col-md-6">
+					<div id="target5" class="square" style="left:150px; top:50px; position:relative;"></div>
+				</div>
+  				<div class="col-6 col-md-6">
+  					<h4>Code example</h4>
+<pre class="prettyprint">
+Perimeter({
+    target: $('#target5')[0],
+    debug: true,
+    outline: 20,
+    onBreach: function () {
+        $(this.target).stop().animate({
+            'width': this.target.clientWidth*1.5,
+            'height': this.target.clientHeight*1.5
+        }, 300);
+    },
+    onLeave: function () {
+        // animate to default values
+    }
+});
+</pre>
+  				</div>
+			</div>
+			<hr id="unittests">
+			<h2>Unit tests</h2>
+			<object data="tests/index.html" id="testsuite" width="100%" height="350"></object>
 			<hr id="browsersupport">
 			<h2>Browser support</h2>
 			<p>Tested in the latest (stable) versions of Google Chrome, Mozilla Firefox, Opera and Safari. As for Internet Explorer; I have tested in IE8+ but it should work in IE7 as well (though, it might be quirky).</p>
+			<p class="alert alert-info">
+				<strong>Note:</strong> needless to say, since Perimeter.js listens to the <code>mousemove</code> event to detect breaches it will not work on mobile devices.
+			</p>
 			<hr id="roadmap">
 			<h2>Road map</h2>
 			<p>When I have some spare time I will try to accomplish the following:</p>
@@ -266,6 +338,15 @@ new Perimeter({
 				<li>More documentation / examples</li>
 				<li>Unit testing</li>
 			</ul>
+			<hr>
+			<h2>About the author</h2>
+			<p>
+				Perimeter.js is written by <a href="http://nl.linkedin.com/in/boyeoomens" target="_blank">Boye</a>, a seasoned front-end developer with over eleven years of in-depth web development experience and passionate about web standards. Graduated in 2008 from the Rotterdam University (Media Technology, BICT). Always aiming for semantic, cross-browser & cross-platform consistent and maintainable code. 
+			</p>
+			<p>
+				<a href="https://twitter.com/_boye" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @_boye</a>
+			</p>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			<hr>
 			<h2>License</h2>
 			<p>

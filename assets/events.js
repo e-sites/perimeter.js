@@ -56,6 +56,38 @@
 			}
 		});
 
+		// Example 4
+		Perimeter({
+			target: $('#target4')[0],
+			debug: true,
+			outline: 50,
+			onBreach: function () {
+				this.target.innerHTML = 'breach!';		
+			},
+			onLeave: function () {
+				this.target.innerHTML = 'left perimeter';
+			}
+		});
+
+		// Example 5
+		Perimeter({
+			target: $('#target5')[0],
+			debug: true,
+			outline: [0, 200, 0],
+			onBreach: function () {
+				$(this.target).stop().animate({
+					'width': this.target.clientWidth*1.5,
+					'height': this.target.clientHeight*1.5
+				}, 300);
+			},
+			onLeave: function () {
+				$(this.target).stop().animate({
+					'width': 100,
+					'height': 100
+				}, 500);
+			}
+		});
+
 		// Manually adjust the outline
 		$('#custom-outline').on('change', function () {
 			ex2.outline = this.value;

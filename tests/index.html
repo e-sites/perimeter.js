@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" ><!--<![endif]-->
+	<head>
+		<link rel="dns-prefetch" href="http://code.jquery.com">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Perimeter.js Test Suite</title>
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css" media="screen">
+		<script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+		<style>
+			#qunit-header span {display:block; font-size:120%;}
+			#qunit-header > a {font-size:70%;}
+			.square {width:100px; height:100px; padding:1em; box-sizing:border-box; border:2px solid; background:lightgray; margin:1em 0 0;}
+			.boundary {position:absolute; border:1px dotted; background:#E4FECB; background:rgba(127,255,0,0.2); margin:0; padding:0; z-index:-1;}
+		</style>
+	</head>
+	<body>
+		<h1 id="qunit-header">
+			<span>Perimeter.js Test Suite</span>
+		</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture">
+			<div id="target1" class="square"></div>
+		</div>
+		<script src="../src/perimeter.js"></script>
+		<script src="../src/monitor.js"></script>
+		<script src="../src/boundary.js"></script>
+		<script src="tests.js"></script>
+	</body>
+</html>

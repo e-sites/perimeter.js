@@ -5,7 +5,7 @@
  *  This gives the opportunity to e.g. lazy-load scripts, show a tooltip or whatnot.
  *  
  *  @author  : Boye Oomens <github@e-sites.nl>
- *  @version : 0.1.0
+ *  @version : 0.2.0
  *  @license : MIT
  *  @see     : http://github.e-sites.nl/perimeter.js/
  */
@@ -51,7 +51,7 @@
 	function Perimeter(options) {
 
 		// We need at least a target element and an outline to work with
-		if ( !options.target || !options.outline ) {
+		if ( !options || !options.target || !options.outline ) {
 			return;
 		}
 
@@ -95,7 +95,7 @@
 		 * 
 		 * @type {Object}
 		 */
-		this.target = doc.getElementById(options.target);
+		this.target = (typeof options.target === 'string' ? doc.getElementById(options.target) : options.target);
 
 		/**
 		 * Boundary used for debugging purposes
@@ -327,19 +327,20 @@
 
 }(Perimeter, window));
 
+/**
+ * Boundary constructor
+ *
+ * @param  {Object} Perimeter object
+ * @return {Object} Boundary object
+ * @constructor
+ */
+
 /* global Perimeter */
 
 (function (Perimeter, doc) {
 
 	'use strict';
 
-	/**
-	 * Boundary constructor
-	 *
-	 * @param  {Object} Perimeter object
-	 * @return {Object} Boundary object
-	 * @constructor
-	 */
 	Perimeter.prototype.Boundary = function (perimeter) {
 
 		/**
@@ -370,7 +371,7 @@
 		/**
 		 * Creates the division and injects it into the DOM
 		 * 
-		 * @return {[type]} [description]
+		 * @return {Object}
 		 */
 		this.create = function () {
 			this.elem = doc.createElement('div');
@@ -386,8 +387,8 @@
 		/**
 		 * Repositions the boundary element
 		 * 
-		 * @param  {Object} target  [description]
-		 * @param  {Number} outline [description]
+		 * @param  {Object} target
+		 * @param  {Number} outline
 		 * @return {Object}
 		 */
 		this.reflow = function (target, outline) {

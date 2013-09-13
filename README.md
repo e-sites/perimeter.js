@@ -8,9 +8,9 @@ More info, documentation and examples @ http://github.e-sites.nl/perimeter.js/
 
 ##Use cases
 <ul>
-	<li>Showing some sort of tooltip / popover when hovering near a certain element, like a hint or a tip</li>
+	<li>Get the user's attention, in terms of showing some sort of tooltip / popover when hovering near a certain element, like a hint or a tip.</li>
 	<li>Lazy load a script when the perimeter of the target element is breached (AFAIK Google does this when a user moves it's mouse towards the red 'compose' button).</li>
-	<li>Fetch data via AJAX and do something with it when a users navigates towards a certain element</li>
+	<li>Fetch data via AJAX and do something with it when a users navigates towards a certain element.</li>
 </ul>
 
 ##Specs
@@ -19,7 +19,7 @@ More info, documentation and examples @ http://github.e-sites.nl/perimeter.js/
 	<li>No dependencies; just plug it in and you're good to go</li>
 	<li>Built-in debugger to actually see where the perimeter is located (boundary.js)</li>
 	<li>Fully documented</li>
-	<li>Unit-tests available (when 0.2.0 lands)</li>
+	<li>Unit-tests available</li>
 </ul>
 
 ##Getting started
@@ -74,7 +74,6 @@ In case you're working with <code>perimeter.debug.js</code> you'll need to add a
 	<colgroup>
 		<col class="col-lg-1">
 		<col class="col-lg-1">
-		<col class="col-lg-1">
 		<col class="col-lg-7">
 	</colgroup>
 	<thead>
@@ -89,9 +88,9 @@ In case you're working with <code>perimeter.debug.js</code> you'll need to add a
 			<td>
 				<code>target</code>
 			</td>
-			<td><code>{String}</code></td>
+			<td><code>{String|HTMLElement}</code></td>
 			<td>
-				The ID of the target element
+				Either a string with the ID of the target element or a DOM element. If the corresponding element is not present the script will fail silently.
 			</td>
 		</tr>
 		<tr>
@@ -144,6 +143,8 @@ In case you're working with <code>perimeter.debug.js</code> you'll need to add a
 
 ##Browser support
 Tested in the latest (stable) versions of Google Chrome, Mozilla Firefox, Opera and Safari. As for Internet Explorer; I have tested in IE8+ but it should work in IE7 as well (though, it might be quirky).
+
+<em><strong>Note:</strong> needless to say, since Perimeter.js listens to the <code>mousemove</code> event to detect breaches it will not work on mobile devices.</em>
 
 ##Road map
 <p>When I have some spare time I will try to accomplish the following:</p>

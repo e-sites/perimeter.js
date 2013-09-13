@@ -41,7 +41,7 @@ new Perimeter({
 });
 ```
 
-<strong>UPDATE:</strong> as from 0.2.0 is also possible to pass DOM elements as target (instead of only a string). This will 
+<strong>UPDATE:</strong> as from 0.2.0 is also possible to pass DOM elements as target (instead of only a string). This way you can instantiate multiple Perimeters within a loop: 
 
 ```js
 var items = document.querySelectorAll('.selector'),

@@ -1,11 +1,11 @@
 /*
- *  Project: Perimeters.js
+ *  Project: Perimeter.js
  *  Creates an invisible perimeter around a target element and monitors mouse breaches.
  *  When a breach is detected the corresponding callback will be invoked.
  *  This gives the opportunity to e.g. lazy-load scripts, show a tooltip or whatnot.
  *  
  *  @author  : Boye Oomens <github@e-sites.nl>
- *  @version : 0.2.0
+ *  @version : 0.2.1
  *  @license : MIT
  *  @see     : http://github.e-sites.nl/perimeter.js/
  */

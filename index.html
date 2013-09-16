@@ -69,7 +69,7 @@
 <pre class="prettyprint">
 &lt;script src="perimeter.min.js"&gt;&lt;/script&gt;
 </pre>
-			<p>Second, just call the <code>Perimeter</code> constructor function and pass the corresponding options.</p>
+			<p>Second, just call the <code>Perimeter</code> (constructor) function and pass the corresponding options.</p>
 <pre class="prettyprint">
 new Perimeter({
     target: 'square',
@@ -136,7 +136,7 @@ while (i--) {
 						</td>
 						<td><code>{HTMLElement}</code></td>
 						<td>
-							Element where the <code>mousemove</code> event will be bound to and therefore acts as monitor for breaches.
+							Element where the <code>mousemove</code> event will be bound to and therefore acts as monitor for breaches. When this property is left out the <code>document</code> will be used as monitor.
 						</td>
 					</tr>
 					<tr>
@@ -145,7 +145,7 @@ while (i--) {
 						</td>
 						<td><code>{Number|Array}</code></td>
 						<td>
-							Outline around the target element. This can either be an array with top/right/bottom/left dimensions or just one number which acts as shorthand for all directions.
+							The actual outline around the target element. This can either be an array with top/right/bottom/left dimensions or just one number which acts as shorthand for all directions.
 						</td>
 					</tr>
 					<tr>

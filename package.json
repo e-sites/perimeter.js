@@ -1,7 +1,7 @@
 {
   "name": "Perimeter.js",
-  "version": "0.1.0",
-  "description": "Set a boundary on a target element and monitor all breach",
+  "version": "0.2.1",
+  "description": "Creates an invisible perimeter around a target element and monitors mouse breaches",
   "homepage": "http://github.e-sites.nl/perimeter.js/",
   "scripts": {
     "test": "grunt jshint",

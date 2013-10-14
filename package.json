@@ -1,6 +1,6 @@
 {
   "name": "Perimeter.js",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Creates an invisible perimeter around a target element and monitors mouse breaches",
   "homepage": "http://github.e-sites.nl/perimeter.js/",
   "scripts": {

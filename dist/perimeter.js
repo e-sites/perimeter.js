@@ -5,7 +5,7 @@
  *  This gives the opportunity to e.g. lazy-load scripts, show a tooltip or whatnot.
  *  
  *  @author  : Boye Oomens <github@e-sites.nl>
- *  @version : 0.2.1
+ *  @version : 0.3.0
  *  @license : MIT
  *  @see     : http://github.e-sites.nl/perimeter.js/
  */
@@ -239,7 +239,12 @@
 		}
 
 		_addEventListener( options.monitor || doc, 'mousemove', this.monitor.observe );
-		_addEventListener(win, 'resize', this.recalculate );
+		_addEventListener( win, 'resize', this.recalculate );
+
+		// Due to different browser behavior when it comes to triggering the mousemove event
+		// while scrolling using the mousehweel, we need to listen to this event as well
+		_addEventListener( doc, 'DOMMouseScroll', this.monitor.observe );
+		_addEventListener( doc, 'mousewheel', this.monitor.observe );
 	};
 
 	// Expose Perimeter to global scope

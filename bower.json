@@ -1,0 +1,30 @@
+{
+  "name": "Perimeter.js",
+  "version": "0.3.0",
+  "homepage": "http://github.e-sites.nl/perimeter.js/",
+  "authors": [
+    "e-sites <github@e-sites.nl>"
+  ],
+  "description": "Creates an invisible perimeter around a target element and monitors mouse breaches",
+  "main": "dist/perimeter.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "perimeter",
+    "breach",
+    "performance",
+    "boundary",
+    "area",
+    "mouse"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}

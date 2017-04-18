@@ -6,14 +6,14 @@ Perimeter.js
 
 More info, documentation and examples @ http://github.e-sites.nl/perimeter.js/
 
-##Use cases
+## Use cases
 <ul>
 	<li>Get the user's attention, in terms of showing some sort of tooltip / popover when hovering near a certain element, like a hint or a tip.</li>
 	<li>Lazy load a script when the perimeter of the target element is breached (AFAIK Google does this when a user moves it's mouse towards the red 'compose' button).</li>
 	<li>Fetch data via AJAX and do something with it when a users navigates towards a certain element.</li>
 </ul>
 
-##Specs
+## Specs
 <ul>
 	<li>Lightweight; (~0.6kb minified / gzipped)</li>
 	<li>No dependencies; just plug it in and you're good to go</li>
@@ -22,7 +22,7 @@ More info, documentation and examples @ http://github.e-sites.nl/perimeter.js/
 	<li>Unit-tests available</li>
 </ul>
 
-##Getting started
+## Getting started
 First and foremost, download the script and include it as follows:
 
 ```html
@@ -69,7 +69,7 @@ In case you're working with <code>perimeter.debug.js</code> you'll need to add a
 }
 ```
 
-###Options
+### Options
 <table class="table table-bordered table-striped bs-table">
 	<colgroup>
 		<col class="col-lg-1">
@@ -141,12 +141,12 @@ In case you're working with <code>perimeter.debug.js</code> you'll need to add a
 	</tbody>
 </table>
 
-##Browser support
+## Browser support
 Tested in the latest (stable) versions of Google Chrome, Mozilla Firefox, Opera and Safari. As for Internet Explorer; I have tested in IE8+ but it should work in IE7 as well (though, it might be quirky).
 
 <em><strong>Note:</strong> needless to say, since Perimeter.js listens to the <code>mousemove</code> event to detect breaches it will not work on mobile devices.</em>
 
-##Road map
+## Road map
 <p>When I have some spare time I will try to accomplish the following:</p>
 <ul>
 	<li>Performance measurements</li>
@@ -154,5 +154,5 @@ Tested in the latest (stable) versions of Google Chrome, Mozilla Firefox, Opera 
 	<li>Unit testing</li>
 </ul>
 
-##License
+## License
 Copyright (C) 2013 e-sites, <a href="http://www.e-sites.nl/">http://e-sites.nl/</a> Licensed under the MIT license.
